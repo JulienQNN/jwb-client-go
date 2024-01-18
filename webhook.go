@@ -8,7 +8,7 @@ import (
 )
 
 // CreateWebhook - Create new webhook
-func(c *Client) CreateWebhook(webhookUrl string, payloadWebhook PayloadWebhook) (*APIResponse, error) {
+func(c *Client) CreateTeamsWebhook(webhookUrl string, payloadWebhook TeamsPayloadWebhook) (*APIResponse, error) {
 	rb, err := json.Marshal(payloadWebhook)
 	if err != nil {
 		return nil, err

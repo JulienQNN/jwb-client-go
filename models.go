@@ -5,7 +5,8 @@ type APIResponse struct {
 	Data   string `json:"data"`
 }
 
-type PayloadWebhook struct {
+// TeamsPayloadWebhook Types for Teams webhook
+type TeamsPayloadWebhook struct {
 	Type            string                        `json:"type"`
 	Context         string                        `json:"context"`
 	ThemeColor      string                        `json:"theme_color"`
