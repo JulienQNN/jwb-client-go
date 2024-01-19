@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+  "time"
 )
 
 // Client -
@@ -11,9 +12,17 @@ type Client struct {
 	HTTPClient *http.Client
 }
 
+// NewClient -
+func NewClient(host, username, password *string) (*Client, error) {
+	c := Client{
+		HTTPClient: &http.Client{Timeout: 10 * time.Second},
+	}
+
+	return &c, nil
+}
+
 func (c *Client) doRequest(req *http.Request) ([]byte, error) {
-	
-  res, err := c.HTTPClient.Do(req)
+	res, err := c.HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
