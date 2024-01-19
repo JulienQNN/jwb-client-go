@@ -5,11 +5,16 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+  "time"
 )
 
 // CreateWebhook - Create new webhook
-func(c *Client) CreateTeamsWebhook(webhookUrl string, payloadWebhook TeamsPayloadWebhook) (*APIResponse, error) {
-	rb, err := json.Marshal(payloadWebhook)
+func CreateTeamsWebhook(webhookUrl string, payloadWebhook TeamsPayloadWebhook) (*APIResponse, error) {
+	c := Client{
+		HTTPClient: &http.Client{Timeout: 10 * time.Second},
+	}
+
+  rb, err := json.Marshal(payloadWebhook)
 	if err != nil {
 		return nil, err
 	}

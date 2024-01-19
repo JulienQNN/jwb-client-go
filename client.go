@@ -12,7 +12,8 @@ type Client struct {
 }
 
 func (c *Client) doRequest(req *http.Request) ([]byte, error) {
-	res, err := c.HTTPClient.Do(req)
+	
+  res, err := c.HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
