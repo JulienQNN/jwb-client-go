@@ -4,16 +4,16 @@ package jwb
 type TeamsPayloadWebhook struct {
   Type            string                        `json:"type"`
 	Context         string                        `json:"context"`
-	ThemeColor      string                        `json:"theme_color"`
+	ThemeColor      string                        `json:"themeColor"`
 	Summary         string                        `json:"summary"`
 	Sections        []Section                     `json:"sections"`
 	PotentialAction []PotentialActionIntermediate `json:"potentialAction"`
 }
 
 type Section struct {
-	ActivityTitle    *string `json:"title"`
-	ActivitySubtitle *string `json:"subtitle"`
-	ActivityImage    *string `json:"image"`
+	ActivityTitle    *string `json:"activityTitle"`
+	ActivitySubtitle *string `json:"activitySubtitle"`
+  ActivityImage    *string `json:"activityImage"`
 	Text             *string `json:"text"`
 	Facts            []Fact  `json:"facts"`
 	Markdown         *bool   `json:"markdown"`

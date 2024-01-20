@@ -23,13 +23,13 @@ func (c *Client) CreateTeamsWebhook(webhookUrl string, payloadWebhook TeamsPaylo
 		return nil, err
 	}
 
-	body, err := c.doRequest(req)
+	_, err = c.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
 
 	webhook := TeamsPayloadWebhook{}
-	err = json.Unmarshal(body, &webhook)
+
 	if err != nil {
 		return nil, err
 	}
