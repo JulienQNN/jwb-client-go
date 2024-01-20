@@ -8,7 +8,7 @@ import (
 )
 
 // CreateWebhook - Create new webhook
-func (c *Client) CreateTeamsWebhook(webhookUrl string, payloadWebhook TeamsPayloadWebhook) (*APIResponse, error) {
+func (c *Client) CreateTeamsWebhook(webhookUrl string, payloadWebhook TeamsPayloadWebhook) (*TeamsPayloadWebhook, error) {
   rb, err := json.Marshal(payloadWebhook)
 	if err != nil {
 		return nil, err
@@ -28,7 +28,7 @@ func (c *Client) CreateTeamsWebhook(webhookUrl string, payloadWebhook TeamsPaylo
 		return nil, err
 	}
 
-	webhook := APIResponse{}
+	webhook := TeamsPayloadWebhook{}
 	err = json.Unmarshal(body, &webhook)
 	if err != nil {
 		return nil, err
