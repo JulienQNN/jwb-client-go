@@ -1,13 +1,9 @@
 package jwb
 
-type APIResponse struct {
-	Status string `json:"status"`
-	Data   string `json:"data"`
-}
-
 // TeamsPayloadWebhook Types for Teams webhook
 type TeamsPayloadWebhook struct {
-	Type            string                        `json:"type"`
+	ID              string                        `json:"id"`
+  Type            string                        `json:"type"`
 	Context         string                        `json:"context"`
 	ThemeColor      string                        `json:"theme_color"`
 	Summary         string                        `json:"summary"`
