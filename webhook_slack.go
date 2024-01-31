@@ -8,11 +8,13 @@ import (
 )
 
 // CreateWebhook - Create new webhook
-func (c *Client) CreateTeamsWebhook(webhookUrl string, payloadWebhook TeamsPayloadWebhook) (*TeamsPayloadWebhook, error) {
+func (c *Client) CreateSlackWebhook(webhookUrl string, payloadWebhook SlackPayloadWebhook) (*SlackPayloadWebhook, error) {
 	rb, err := json.Marshal(payloadWebhook)
 	if err != nil {
 		return nil, err
 	}
+
+	fmt.Println("rb", string(rb))
 
 	req, err := http.NewRequest(
 		"POST",
@@ -28,7 +30,7 @@ func (c *Client) CreateTeamsWebhook(webhookUrl string, payloadWebhook TeamsPaylo
 		return nil, err
 	}
 
-	webhook := TeamsPayloadWebhook{}
+	webhook := SlackPayloadWebhook{}
 
 	if err != nil {
 		return nil, err
