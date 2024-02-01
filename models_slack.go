@@ -1,7 +1,16 @@
 package jwb
 
-type SlackPayloadWebhook struct {
+type SlackAttachmentPayloadWebhook struct {
+	Attachments []SlackAttachment `json:"attachments"`
+}
+
+type SlackMessagePayloadWebhook struct {
 	Block []SlackBlock `json:"blocks"`
+}
+
+type SlackAttachment struct {
+	Color  string       `json:"color,omitempty"`
+	Blocks []SlackBlock `json:"blocks"`
 }
 
 type SlackBlock struct {

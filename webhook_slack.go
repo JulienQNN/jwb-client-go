@@ -7,8 +7,7 @@ import (
 	"strings"
 )
 
-// CreateWebhook - Create new webhook
-func (c *Client) CreateSlackWebhook(webhookUrl string, payloadWebhook SlackPayloadWebhook) (*SlackPayloadWebhook, error) {
+func (c *Client) CreateSlackAttachmentWebhook(webhookUrl string, payloadWebhook SlackAttachmentPayloadWebhook) (*SlackAttachmentPayloadWebhook, error) {
 	rb, err := json.Marshal(payloadWebhook)
 	if err != nil {
 		return nil, err
@@ -30,7 +29,38 @@ func (c *Client) CreateSlackWebhook(webhookUrl string, payloadWebhook SlackPaylo
 		return nil, err
 	}
 
-	webhook := SlackPayloadWebhook{}
+	webhook := SlackAttachmentPayloadWebhook{}
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &webhook, nil
+}
+
+func (c *Client) CreateSlackMessageWebhook(webhookUrl string, payloadWebhook SlackMessagePayloadWebhook) (*SlackMessagePayloadWebhook, error) {
+	rb, err := json.Marshal(payloadWebhook)
+	if err != nil {
+		return nil, err
+	}
+
+	fmt.Println("rb", string(rb))
+
+	req, err := http.NewRequest(
+		"POST",
+		fmt.Sprintf(webhookUrl),
+		strings.NewReader(string(rb)),
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	_, err = c.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	webhook := SlackMessagePayloadWebhook{}
 
 	if err != nil {
 		return nil, err
